@@ -188,6 +188,29 @@ func (cl *Client) Login() error {
 	return nil
 }
 
+func (cl *Client) GetSessionEncpart(domain string) (types.EncryptedData, error) {
+	sess, ok := cl.sessions.get(domain)
+	if !ok {
+		return types.EncryptedData{}, errors.New("realm not found")
+	}
+
+	return sess.tgt.EncPart, nil
+}
+
+func (cl *Client) GetSessionEncryptionKey(domain string) (types.EncryptionKey, error) {
+	sess, ok := cl.sessions.get(domain)
+	if !ok {
+		return types.EncryptionKey{}, errors.New("realm not found")
+	}
+
+	return sess.sessionKey, nil
+}
+
+func (cl *Client) GetSessionTicket(domain string) messages.Ticket {
+	sess, _ := cl.sessions.get(domain)
+	return sess.tgt
+}
+
 // AffirmLogin will only perform an AS exchange with the KDC if the client does not already have a TGT.
 func (cl *Client) AffirmLogin() error {
 	_, endTime, _, _, err := cl.sessionTimes(cl.Credentials.Domain())

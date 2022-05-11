@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/binary"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"strings"
 	"time"
@@ -24,6 +25,153 @@ type CCache struct {
 	DefaultPrincipal principal
 	Credentials      []*Credential
 	Path             string
+}
+
+func NewCCacheFromTicket(princ string, domain string, ticket []byte, encKey types.EncryptionKey) (*CCache, error) {
+	//var err error
+
+	clientPrinc := principal{
+		Realm:         domain,
+		PrincipalName: types.NewPrincipalName(1, princ),
+	}
+	serverPrinc := principal{
+		Realm:         domain,
+		PrincipalName: types.NewPrincipalName(2, fmt.Sprintf("krbtgt/%v", domain)),
+	}
+
+	ccache := &CCache{
+		Version: 4,
+		Header: header{
+			length: 12,
+			fields: []headerField{
+				{
+					tag:    headerFieldTagKDCOffset,
+					length: 8,
+					value:  make([]byte, 8),
+				},
+			},
+		},
+		DefaultPrincipal: clientPrinc,
+		Credentials: []*Credential{
+			{
+				Client:    clientPrinc,
+				Server:    serverPrinc,
+				Key:       encKey,
+				AuthTime:  time.Now(),
+				StartTime: time.Now(),
+				EndTime:   time.Now().Add(time.Hour * 24),
+				RenewTill: time.Now().Add(time.Hour * 24),
+				IsSKey:    false,
+				TicketFlags: asn1.BitString{
+					Bytes:     []byte{80, 225, 0, 0},
+					BitLength: 32,
+				},
+				Addresses: []types.HostAddress{},
+				AuthData:  []types.AuthorizationDataEntry{},
+				Ticket:    ticket,
+			},
+			{
+				Client: clientPrinc,
+				Server: principal{
+					Realm: "X-CACHECONF:",
+					PrincipalName: types.PrincipalName{
+						NameType:   0,
+						NameString: []string{"krb5_ccache_conf_data", "fast_avail", "krbtgt/DOMAIN1.LOCAL@DOMAIN1.LOCAL"},
+					},
+				},
+				Key: types.EncryptionKey{
+					KeyType:  0,
+					KeyValue: []byte{},
+				},
+				AuthTime:  time.Unix(0, 0),
+				StartTime: time.Unix(0, 0),
+				EndTime:   time.Unix(0, 0),
+				RenewTill: time.Unix(0, 0),
+				IsSKey:    false,
+				TicketFlags: asn1.BitString{
+					Bytes:     []byte{0, 0, 0, 0},
+					BitLength: 32,
+				},
+				Addresses:    []types.HostAddress{},
+				AuthData:     []types.AuthorizationDataEntry{},
+				Ticket:       []byte{121, 101, 115},
+				SecondTicket: []byte{},
+			},
+			{
+				Client: clientPrinc,
+				Server: principal{
+					Realm: "X-CACHECONF:",
+					PrincipalName: types.PrincipalName{
+						NameType:   0,
+						NameString: []string{"krb5_ccache_conf_data", "pa_type", "krbtgt/DOMAIN1.LOCAL@DOMAIN1.LOCAL"},
+					},
+				},
+				Key: types.EncryptionKey{
+					KeyType:  0,
+					KeyValue: []byte{},
+				},
+				AuthTime:  time.Unix(0, 0),
+				StartTime: time.Unix(0, 0),
+				EndTime:   time.Unix(0, 0),
+				RenewTill: time.Unix(0, 0),
+				IsSKey:    false,
+				TicketFlags: asn1.BitString{
+					Bytes:     []byte{0, 0, 0, 0},
+					BitLength: 32,
+				},
+				Addresses:    []types.HostAddress{},
+				AuthData:     []types.AuthorizationDataEntry{},
+				Ticket:       []byte{50},
+				SecondTicket: []byte{},
+			},
+		},
+		Path: "",
+	}
+
+	return ccache, nil
+}
+
+func (c *CCache) Marshal() ([]byte, error) {
+	p := 0
+
+	var data []byte
+
+	//First byte of cache is always 5
+	data = append(data, 5)
+	p++
+
+	// The second byte is file's version
+	// For testing purposes I'll set it to 4
+	data = append(data, 4)
+	p++
+
+	// On version 4 the byte order is BigEndian
+	var endian binary.ByteOrder
+	endian = binary.BigEndian
+
+	// Writing header
+	if c.Version == 4 {
+		err := writeHeader(&data, &p, c, &endian)
+		if err != nil {
+			panic(err)
+		}
+	}
+
+	// Writing principals
+	err := writePrincipal(&data, &p, c, &endian, c.DefaultPrincipal)
+	if err != nil {
+		panic(err)
+	}
+
+	// Writing credentials
+	for _, credential := range c.Credentials {
+		err := writeCredential(&data, &p, c, &endian, credential)
+		if err != nil {
+			panic(err)
+		}
+	}
+
+	return data, nil
 }
 
 type header struct {
@@ -130,6 +278,30 @@ func parseHeader(b []byte, p *int, c *CCache, e *binary.ByteOrder) error {
 	return nil
 }
 
+func writeHeader(b *[]byte, p *int, c *CCache, e *binary.ByteOrder) error {
+	//var err error
+
+	if c.Version != 4 {
+		return errors.New("Credentials cache version is not 4 so there is no header to parse.")
+	}
+
+	//First we write header's length
+	writeInt16(b, p, e, int16(c.Header.length))
+
+	for _, field := range c.Header.fields {
+		writeInt16(b, p, e, int16(field.tag))
+		writeInt16(b, p, e, int16(field.length))
+
+		*b = append(*b, field.value...)
+		//_, err = b.Write(field.value)
+		//if err != nil {
+		//	panic(err)
+		//}
+	}
+
+	return nil
+}
+
 // Parse the Keytab bytes of a principal into a Keytab entry's principal.
 func parsePrincipal(b []byte, p *int, c *CCache, e *binary.ByteOrder) (princ principal) {
 	if c.Version != 1 {
@@ -148,6 +320,30 @@ func parsePrincipal(b []byte, p *int, c *CCache, e *binary.ByteOrder) (princ pri
 		princ.PrincipalName.NameString = append(princ.PrincipalName.NameString, string(readBytes(b, p, int(l), e)))
 	}
 	return princ
+}
+
+func writePrincipal(b *[]byte, p *int, c *CCache, e *binary.ByteOrder, princ principal) error {
+	var err error
+
+	if c.Version != 1 {
+		writeInt32(b, p, e, princ.PrincipalName.NameType)
+	}
+	nc := len(princ.PrincipalName.NameString)
+	writeInt32(b, p, e, int32(nc))
+	lenRealm := len(princ.Realm)
+	writeInt32(b, p, e, int32(lenRealm))
+
+	realmBytes := []byte(princ.Realm)
+	*b = append(*b, realmBytes...)
+	*p += len(realmBytes)
+
+	for _, name := range princ.PrincipalName.NameString {
+		writeInt32(b, p, e, int32(len(name)))
+		*b = append(*b, []byte(name)...)
+		*p += len(name)
+	}
+
+	return err
 }
 
 func parseCredential(b []byte, p *int, c *CCache, e *binary.ByteOrder) (cred *Credential, err error) {
@@ -186,6 +382,65 @@ func parseCredential(b []byte, p *int, c *CCache, e *binary.ByteOrder) (cred *Cr
 	cred.Ticket = readData(b, p, e)
 	cred.SecondTicket = readData(b, p, e)
 	return
+}
+
+func writeCredential(b *[]byte, p *int, c *CCache, e *binary.ByteOrder, cred *Credential) error {
+	var err error
+
+	// Writing principals
+	err = writePrincipal(b, p, c, e, cred.Client)
+	if err != nil {
+		panic(err)
+	}
+	err = writePrincipal(b, p, c, e, cred.Server)
+	if err != nil {
+		panic(err)
+	}
+
+	// Writing encryption key
+	writeInt16(b, p, e, int16(cred.Key.KeyType))
+	writeData(b, p, e, cred.Key.KeyValue)
+
+	// Writing timestamps
+	writeTimestamp(b, p, e, cred.AuthTime)
+	writeTimestamp(b, p, e, cred.StartTime)
+	writeTimestamp(b, p, e, cred.EndTime)
+	writeTimestamp(b, p, e, cred.RenewTill)
+
+	// Some key
+	if cred.IsSKey {
+		writeInt8(b, p, e, 1)
+	} else {
+		writeInt8(b, p, e, 0)
+	}
+
+	writeBytes(b, p, 4, e, cred.TicketFlags.Bytes)
+
+	// Writing addresses
+	l := len(cred.Addresses)
+	writeInt32(b, p, e, int32(l))
+	for _, a := range cred.Addresses {
+		err = writeAddress(b, p, e, a)
+		if err != nil {
+			panic(err)
+		}
+	}
+
+	// Writing auth data
+	l = len(cred.AuthData)
+	writeInt32(b, p, e, int32(l))
+	for _, a := range cred.AuthData {
+		err = writeAuthDataEntry(b, p, e, a)
+		if err != nil {
+			panic(err)
+		}
+	}
+
+	// Writing tickets
+	writeData(b, p, e, cred.Ticket)
+	writeData(b, p, e, cred.SecondTicket)
+
+	return err
 }
 
 // GetClientPrincipalName returns a PrincipalName type for the client the credentials cache is for.
@@ -264,11 +519,23 @@ func readData(b []byte, p *int, e *binary.ByteOrder) []byte {
 	return readBytes(b, p, int(l), e)
 }
 
+func writeData(b *[]byte, p *int, e *binary.ByteOrder, data []byte) {
+	l := len(data)
+	writeInt32(b, p, e, int32(l))
+	writeBytes(b, p, l, e, data)
+}
+
 func readAddress(b []byte, p *int, e *binary.ByteOrder) types.HostAddress {
 	a := types.HostAddress{}
 	a.AddrType = int32(readInt16(b, p, e))
 	a.Address = readData(b, p, e)
 	return a
+}
+
+func writeAddress(b *[]byte, p *int, e *binary.ByteOrder, a types.HostAddress) error {
+	writeInt16(b, p, e, int16(a.AddrType))
+	writeData(b, p, e, a.Address)
+	return nil
 }
 
 func readAuthDataEntry(b []byte, p *int, e *binary.ByteOrder) types.AuthorizationDataEntry {
@@ -278,9 +545,20 @@ func readAuthDataEntry(b []byte, p *int, e *binary.ByteOrder) types.Authorizatio
 	return a
 }
 
+func writeAuthDataEntry(b *[]byte, p *int, e *binary.ByteOrder, a types.AuthorizationDataEntry) error {
+	writeInt16(b, p, e, int16(a.ADType))
+	writeData(b, p, e, a.ADData)
+	return nil
+}
+
 // Read bytes representing a timestamp.
 func readTimestamp(b []byte, p *int, e *binary.ByteOrder) time.Time {
 	return time.Unix(int64(readInt32(b, p, e)), 0)
+}
+
+func writeTimestamp(b *[]byte, p *int, e *binary.ByteOrder, t time.Time) error {
+	writeInt32(b, p, e, int32(t.Unix()))
+	return nil
 }
 
 // Read bytes representing an eight bit integer.
@@ -291,12 +569,30 @@ func readInt8(b []byte, p *int, e *binary.ByteOrder) (i int8) {
 	return
 }
 
+func writeInt8(b *[]byte, p *int, e *binary.ByteOrder, i int8) error {
+	*b = append(*b, byte(i))
+	*p++
+	return nil
+}
+
 // Read bytes representing a sixteen bit integer.
 func readInt16(b []byte, p *int, e *binary.ByteOrder) (i int16) {
 	buf := bytes.NewBuffer(b[*p : *p+2])
 	binary.Read(buf, *e, &i)
 	*p += 2
 	return
+}
+
+func writeInt16(b *[]byte, p *int, e *binary.ByteOrder, i int16) {
+	buf := make([]byte, 2)
+	switch *e {
+	case binary.BigEndian:
+		binary.BigEndian.PutUint16(buf, uint16(i))
+	case binary.LittleEndian:
+		binary.LittleEndian.PutUint16(buf, uint16(i))
+	}
+	*b = append(*b, buf...)
+	*p += 2
 }
 
 // Read bytes representing a thirty two bit integer.
@@ -307,12 +603,33 @@ func readInt32(b []byte, p *int, e *binary.ByteOrder) (i int32) {
 	return
 }
 
+func writeInt32(b *[]byte, p *int, e *binary.ByteOrder, i int32) {
+	buf := make([]byte, 4)
+	switch *e {
+	case binary.BigEndian:
+		binary.BigEndian.PutUint32(buf, uint32(i))
+	case binary.LittleEndian:
+		binary.LittleEndian.PutUint32(buf, uint32(i))
+	}
+	*b = append(*b, buf...)
+	*p += 4
+}
+
 func readBytes(b []byte, p *int, s int, e *binary.ByteOrder) []byte {
 	buf := bytes.NewBuffer(b[*p : *p+s])
 	r := make([]byte, s)
 	binary.Read(buf, *e, &r)
 	*p += s
 	return r
+}
+
+func writeBytes(b *[]byte, p *int, s int, e *binary.ByteOrder, data []byte) {
+	//switch *e {
+	//case binary.BigEndian:
+	//	err := binary.Write()
+	//}
+	*b = append(*b, data...)
+	*p += s
 }
 
 func isNativeEndianLittle() bool {
