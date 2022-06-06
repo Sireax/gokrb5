@@ -10,11 +10,11 @@ import (
 	"net/http"
 	"os"
 
-	"gopkg.in/jcmturner/gokrb5.v7/client"
-	"gopkg.in/jcmturner/gokrb5.v7/config"
-	"gopkg.in/jcmturner/gokrb5.v7/keytab"
-	"gopkg.in/jcmturner/gokrb5.v7/spnego"
-	"gopkg.in/jcmturner/gokrb5.v7/test/testdata"
+	"github.com/Sireax/gokrb5.v7/client"
+	"github.com/Sireax/gokrb5.v7/config"
+	"github.com/Sireax/gokrb5.v7/keytab"
+	"github.com/Sireax/gokrb5.v7/spnego"
+	"github.com/Sireax/gokrb5.v7/test/testdata"
 )
 
 const (

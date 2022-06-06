@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"gopkg.in/jcmturner/gokrb5.v7/test"
-	"gopkg.in/jcmturner/gokrb5.v7/test/testdata"
+	"github.com/Sireax/gokrb5.v7/test"
+	"github.com/Sireax/gokrb5.v7/test/testdata"
 )
 
 func TestConfig_GetKDCsUsesConfiguredKDC(t *testing.T) {

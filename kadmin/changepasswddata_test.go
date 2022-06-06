@@ -5,9 +5,9 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"gopkg.in/jcmturner/gokrb5.v7/iana/nametype"
-	"gopkg.in/jcmturner/gokrb5.v7/test/testdata"
-	"gopkg.in/jcmturner/gokrb5.v7/types"
+	"github.com/Sireax/gokrb5.v7/iana/nametype"
+	"github.com/Sireax/gokrb5.v7/test/testdata"
+	"github.com/Sireax/gokrb5.v7/types"
 )
 
 func TestChangePasswdData_Marshal(t *testing.T) {

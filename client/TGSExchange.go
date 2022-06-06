@@ -1,11 +1,11 @@
 package client
 
 import (
-	"gopkg.in/jcmturner/gokrb5.v7/iana/flags"
-	"gopkg.in/jcmturner/gokrb5.v7/iana/nametype"
-	"gopkg.in/jcmturner/gokrb5.v7/krberror"
-	"gopkg.in/jcmturner/gokrb5.v7/messages"
-	"gopkg.in/jcmturner/gokrb5.v7/types"
+	"github.com/Sireax/gokrb5.v7/iana/flags"
+	"github.com/Sireax/gokrb5.v7/iana/nametype"
+	"github.com/Sireax/gokrb5.v7/krberror"
+	"github.com/Sireax/gokrb5.v7/messages"
+	"github.com/Sireax/gokrb5.v7/types"
 )
 
 // TGSREQGenerateAndExchange generates the TGS_REQ and performs a TGS exchange to retrieve a ticket to the specified SPN.

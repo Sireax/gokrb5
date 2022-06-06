@@ -5,9 +5,9 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"gopkg.in/jcmturner/gokrb5.v7/iana"
-	"gopkg.in/jcmturner/gokrb5.v7/iana/msgtype"
-	"gopkg.in/jcmturner/gokrb5.v7/test/testdata"
+	"github.com/Sireax/gokrb5.v7/iana"
+	"github.com/Sireax/gokrb5.v7/iana/msgtype"
+	"github.com/Sireax/gokrb5.v7/test/testdata"
 )
 
 func TestUnmarshalReply(t *testing.T) {

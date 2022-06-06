@@ -2,7 +2,7 @@ package types
 
 import (
 	"github.com/stretchr/testify/assert"
-	"gopkg.in/jcmturner/gokrb5.v7/iana/nametype"
+	"github.com/Sireax/gokrb5.v7/iana/nametype"
 
 	"testing"
 )
