@@ -3,9 +3,9 @@ package service
 import (
 	"time"
 
-	"github.com/Sireax/gokrb5.v7/credentials"
-	"github.com/Sireax/gokrb5.v7/iana/errorcode"
-	"github.com/Sireax/gokrb5.v7/messages"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/credentials"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/errorcode"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/messages"
 )
 
 // VerifyAPREQ verifies an AP_REQ sent to the service. Returns a boolean for if the AP_REQ is valid and the client's principal name and realm.

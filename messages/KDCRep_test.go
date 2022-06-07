@@ -7,14 +7,14 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/Sireax/gokrb5.v7/credentials"
-	"github.com/Sireax/gokrb5.v7/iana"
-	"github.com/Sireax/gokrb5.v7/iana/etypeID"
-	"github.com/Sireax/gokrb5.v7/iana/msgtype"
-	"github.com/Sireax/gokrb5.v7/iana/nametype"
-	"github.com/Sireax/gokrb5.v7/iana/patype"
-	"github.com/Sireax/gokrb5.v7/keytab"
-	"github.com/Sireax/gokrb5.v7/test/testdata"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/credentials"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/etypeID"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/msgtype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/nametype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/patype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/keytab"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/test/testdata"
 )
 
 const (

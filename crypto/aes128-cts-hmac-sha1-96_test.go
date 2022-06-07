@@ -5,8 +5,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/Sireax/gokrb5.v7/crypto/common"
-	"github.com/Sireax/gokrb5.v7/crypto/rfc3962"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/crypto/common"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/crypto/rfc3962"
 )
 
 func TestAes128CtsHmacSha196_StringToKey(t *testing.T) {

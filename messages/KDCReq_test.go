@@ -7,12 +7,12 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/Sireax/gokrb5.v7/iana"
-	"github.com/Sireax/gokrb5.v7/iana/addrtype"
-	"github.com/Sireax/gokrb5.v7/iana/msgtype"
-	"github.com/Sireax/gokrb5.v7/iana/nametype"
-	"github.com/Sireax/gokrb5.v7/iana/patype"
-	"github.com/Sireax/gokrb5.v7/test/testdata"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/addrtype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/msgtype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/nametype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/patype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/test/testdata"
 )
 
 func TestUnmarshalKDCReqBody(t *testing.T) {

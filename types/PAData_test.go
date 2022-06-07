@@ -7,8 +7,8 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/Sireax/gokrb5.v7/iana/patype"
-	"github.com/Sireax/gokrb5.v7/test/testdata"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/patype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/test/testdata"
 )
 
 func TestUnmarshalPADataSequence(t *testing.T) {

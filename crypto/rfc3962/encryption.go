@@ -7,8 +7,8 @@ import (
 	"fmt"
 
 	"gopkg.in/jcmturner/aescts.v1"
-	"github.com/Sireax/gokrb5.v7/crypto/common"
-	"github.com/Sireax/gokrb5.v7/crypto/etype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/crypto/common"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/crypto/etype"
 )
 
 // EncryptData encrypts the data provided using methods specific to the etype provided as defined in RFC 3962.

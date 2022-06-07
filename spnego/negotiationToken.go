@@ -6,11 +6,11 @@ import (
 	"fmt"
 
 	"github.com/jcmturner/gofork/encoding/asn1"
-	"github.com/Sireax/gokrb5.v7/client"
-	"github.com/Sireax/gokrb5.v7/gssapi"
-	"github.com/Sireax/gokrb5.v7/messages"
-	"github.com/Sireax/gokrb5.v7/service"
-	"github.com/Sireax/gokrb5.v7/types"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/client"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/gssapi"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/messages"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/service"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/types"
 )
 
 // https://msdn.microsoft.com/en-us/library/ms995330.aspx

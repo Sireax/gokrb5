@@ -2,7 +2,7 @@ package types
 
 import (
 	"github.com/stretchr/testify/assert"
-	"github.com/Sireax/gokrb5.v7/iana/nametype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/nametype"
 
 	"testing"
 )

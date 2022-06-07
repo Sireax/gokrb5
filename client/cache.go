@@ -5,8 +5,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Sireax/gokrb5.v7/messages"
-	"github.com/Sireax/gokrb5.v7/types"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/messages"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/types"
 )
 
 // Cache for service tickets held by the client.

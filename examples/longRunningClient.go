@@ -6,10 +6,10 @@ import (
 	"os"
 	"time"
 
-	"github.com/Sireax/gokrb5.v7/client"
-	"github.com/Sireax/gokrb5.v7/config"
-	"github.com/Sireax/gokrb5.v7/keytab"
-	"github.com/Sireax/gokrb5.v7/test/testdata"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/client"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/config"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/keytab"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/test/testdata"
 )
 
 const (

@@ -5,14 +5,14 @@ import (
 	"time"
 
 	"github.com/jcmturner/gofork/encoding/asn1"
-	"github.com/Sireax/gokrb5.v7/asn1tools"
-	"github.com/Sireax/gokrb5.v7/crypto"
-	"github.com/Sireax/gokrb5.v7/iana"
-	"github.com/Sireax/gokrb5.v7/iana/asnAppTag"
-	"github.com/Sireax/gokrb5.v7/iana/keyusage"
-	"github.com/Sireax/gokrb5.v7/iana/msgtype"
-	"github.com/Sireax/gokrb5.v7/krberror"
-	"github.com/Sireax/gokrb5.v7/types"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/asn1tools"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/crypto"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/asnAppTag"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/keyusage"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/msgtype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/krberror"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/types"
 )
 
 // KRBPriv implements RFC 4120 type: https://tools.ietf.org/html/rfc4120#section-5.7.1.

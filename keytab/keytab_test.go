@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/Sireax/gokrb5.v7/test/testdata"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/test/testdata"
 )
 
 func TestUnmarshal(t *testing.T) {

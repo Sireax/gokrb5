@@ -5,11 +5,11 @@ import (
 	"encoding/hex"
 	"fmt"
 
-	"github.com/Sireax/gokrb5.v7/crypto/etype"
-	"github.com/Sireax/gokrb5.v7/iana/chksumtype"
-	"github.com/Sireax/gokrb5.v7/iana/etypeID"
-	"github.com/Sireax/gokrb5.v7/iana/patype"
-	"github.com/Sireax/gokrb5.v7/types"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/crypto/etype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/chksumtype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/etypeID"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/patype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/types"
 )
 
 // GetEtype returns an instances of the required etype struct for the etype ID.

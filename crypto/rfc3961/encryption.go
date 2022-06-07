@@ -9,8 +9,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/Sireax/gokrb5.v7/crypto/common"
-	"github.com/Sireax/gokrb5.v7/crypto/etype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/crypto/common"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/crypto/etype"
 )
 
 // DES3EncryptData encrypts the data provided using DES3 and methods specific to the etype provided.

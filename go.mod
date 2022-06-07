@@ -1,4 +1,4 @@
-module github.com/Sireax/gokrb5.v7
+module gitlab.akb-it.ru/cloud_sber/gokrb5
 
 go 1.18
 

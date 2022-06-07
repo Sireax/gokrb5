@@ -2,7 +2,7 @@
 package service
 
 import (
-	"github.com/Sireax/gokrb5.v7/types"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/types"
 	"sync"
 	"time"
 )

@@ -6,11 +6,11 @@ import (
 	"crypto/sha1"
 	"hash"
 
-	"github.com/Sireax/gokrb5.v7/crypto/common"
-	"github.com/Sireax/gokrb5.v7/crypto/rfc3961"
-	"github.com/Sireax/gokrb5.v7/crypto/rfc3962"
-	"github.com/Sireax/gokrb5.v7/iana/chksumtype"
-	"github.com/Sireax/gokrb5.v7/iana/etypeID"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/crypto/common"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/crypto/rfc3961"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/crypto/rfc3962"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/chksumtype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/etypeID"
 )
 
 // RFC 3962

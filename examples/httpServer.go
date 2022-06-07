@@ -10,10 +10,10 @@ import (
 	"os"
 
 	goidentity "gopkg.in/jcmturner/goidentity.v3"
-	"github.com/Sireax/gokrb5.v7/keytab"
-	"github.com/Sireax/gokrb5.v7/service"
-	"github.com/Sireax/gokrb5.v7/spnego"
-	"github.com/Sireax/gokrb5.v7/test/testdata"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/keytab"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/service"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/spnego"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/test/testdata"
 )
 
 const (

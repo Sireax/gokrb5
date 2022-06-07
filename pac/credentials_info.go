@@ -5,9 +5,9 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/Sireax/gokrb5.v7/crypto"
-	"github.com/Sireax/gokrb5.v7/iana/keyusage"
-	"github.com/Sireax/gokrb5.v7/types"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/crypto"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/keyusage"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/types"
 	"gopkg.in/jcmturner/rpc.v1/mstypes"
 	"gopkg.in/jcmturner/rpc.v1/ndr"
 )

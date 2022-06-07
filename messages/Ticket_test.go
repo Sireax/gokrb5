@@ -9,14 +9,14 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/Sireax/gokrb5.v7/iana"
-	"github.com/Sireax/gokrb5.v7/iana/addrtype"
-	"github.com/Sireax/gokrb5.v7/iana/adtype"
-	"github.com/Sireax/gokrb5.v7/iana/nametype"
-	"github.com/Sireax/gokrb5.v7/iana/trtype"
-	"github.com/Sireax/gokrb5.v7/keytab"
-	"github.com/Sireax/gokrb5.v7/test/testdata"
-	"github.com/Sireax/gokrb5.v7/types"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/addrtype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/adtype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/nametype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/trtype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/keytab"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/test/testdata"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/types"
 )
 
 func TestUnmarshalTicket(t *testing.T) {

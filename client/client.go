@@ -6,16 +6,16 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/Sireax/gokrb5.v7/config"
-	"github.com/Sireax/gokrb5.v7/credentials"
-	"github.com/Sireax/gokrb5.v7/crypto"
-	"github.com/Sireax/gokrb5.v7/crypto/etype"
-	"github.com/Sireax/gokrb5.v7/iana/errorcode"
-	"github.com/Sireax/gokrb5.v7/iana/nametype"
-	"github.com/Sireax/gokrb5.v7/keytab"
-	"github.com/Sireax/gokrb5.v7/krberror"
-	"github.com/Sireax/gokrb5.v7/messages"
-	"github.com/Sireax/gokrb5.v7/types"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/config"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/credentials"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/crypto"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/crypto/etype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/errorcode"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/nametype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/keytab"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/krberror"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/messages"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/types"
 )
 
 // Client side configuration and state.

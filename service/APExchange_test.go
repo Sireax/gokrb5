@@ -6,16 +6,16 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/Sireax/gokrb5.v7/client"
-	"github.com/Sireax/gokrb5.v7/config"
-	"github.com/Sireax/gokrb5.v7/credentials"
-	"github.com/Sireax/gokrb5.v7/iana/errorcode"
-	"github.com/Sireax/gokrb5.v7/iana/flags"
-	"github.com/Sireax/gokrb5.v7/iana/nametype"
-	"github.com/Sireax/gokrb5.v7/keytab"
-	"github.com/Sireax/gokrb5.v7/messages"
-	"github.com/Sireax/gokrb5.v7/test/testdata"
-	"github.com/Sireax/gokrb5.v7/types"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/client"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/config"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/credentials"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/errorcode"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/flags"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/nametype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/keytab"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/messages"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/test/testdata"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/types"
 )
 
 func TestVerifyAPREQ(t *testing.T) {

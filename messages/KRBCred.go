@@ -5,12 +5,12 @@ import (
 	"time"
 
 	"github.com/jcmturner/gofork/encoding/asn1"
-	"github.com/Sireax/gokrb5.v7/crypto"
-	"github.com/Sireax/gokrb5.v7/iana/asnAppTag"
-	"github.com/Sireax/gokrb5.v7/iana/keyusage"
-	"github.com/Sireax/gokrb5.v7/iana/msgtype"
-	"github.com/Sireax/gokrb5.v7/krberror"
-	"github.com/Sireax/gokrb5.v7/types"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/crypto"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/asnAppTag"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/keyusage"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/msgtype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/krberror"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/types"
 )
 
 type marshalKRBCred struct {

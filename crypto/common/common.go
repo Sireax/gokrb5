@@ -9,7 +9,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/Sireax/gokrb5.v7/crypto/etype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/crypto/etype"
 )
 
 // ZeroPad pads bytes with zeros to nearest multiple of message size m.

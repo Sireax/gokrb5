@@ -3,7 +3,7 @@ package rfc3961
 import (
 	"bytes"
 
-	"github.com/Sireax/gokrb5.v7/crypto/etype"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/crypto/etype"
 )
 
 const (

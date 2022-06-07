@@ -4,8 +4,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/Sireax/gokrb5.v7/keytab"
-	"github.com/Sireax/gokrb5.v7/types"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/keytab"
+	"gitlab.akb-it.ru/cloud_sber/gokrb5/types"
 )
 
 // Settings defines service side configuration settings.
