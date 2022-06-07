@@ -1,6 +1,6 @@
 module gitlab.akb-it.ru/cloud_sber/gokrb5
 
-go 1.18
+go 1.17
 
 require (
 	github.com/hashicorp/go-uuid v1.0.3
