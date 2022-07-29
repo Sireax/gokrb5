@@ -11,7 +11,7 @@ import (
 	"unsafe"
 
 	"github.com/jcmturner/gofork/encoding/asn1"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/types"
+	"github.com/jcmturner/gokrb5/types"
 )
 
 const (

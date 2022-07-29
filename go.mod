@@ -1,4 +1,4 @@
-module gitlab.akb-it.ru/cloud_sber/gokrb5
+module github.com/jcmturner/gokrb5
 
 go 1.17
 

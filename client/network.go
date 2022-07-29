@@ -9,8 +9,8 @@ import (
 	"net"
 	"time"
 
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/errorcode"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/messages"
+	"github.com/jcmturner/gokrb5/iana/errorcode"
+	"github.com/jcmturner/gokrb5/messages"
 )
 
 // SendToKDC performs network actions to send data to the KDC.

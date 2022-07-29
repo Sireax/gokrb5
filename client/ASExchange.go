@@ -1,14 +1,14 @@
 package client
 
 import (
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/crypto"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/crypto/etype"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/errorcode"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/keyusage"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/patype"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/krberror"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/messages"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/types"
+	"github.com/jcmturner/gokrb5/crypto"
+	"github.com/jcmturner/gokrb5/crypto/etype"
+	"github.com/jcmturner/gokrb5/iana/errorcode"
+	"github.com/jcmturner/gokrb5/iana/keyusage"
+	"github.com/jcmturner/gokrb5/iana/patype"
+	"github.com/jcmturner/gokrb5/krberror"
+	"github.com/jcmturner/gokrb5/messages"
+	"github.com/jcmturner/gokrb5/types"
 )
 
 // ASExchange performs an AS exchange for the client to retrieve a TGT.

@@ -7,10 +7,10 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/adtype"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/nametype"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/test/testdata"
+	"github.com/jcmturner/gokrb5/iana"
+	"github.com/jcmturner/gokrb5/iana/adtype"
+	"github.com/jcmturner/gokrb5/iana/nametype"
+	"github.com/jcmturner/gokrb5/test/testdata"
 )
 
 func unmarshalAuthenticatorTest(t *testing.T, v string) Authenticator {

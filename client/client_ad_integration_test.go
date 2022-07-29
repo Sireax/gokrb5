@@ -6,13 +6,13 @@ import (
 	"log"
 
 	"github.com/stretchr/testify/assert"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/config"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/etypeID"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/nametype"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/keytab"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/test"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/test/testdata"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/types"
+	"github.com/jcmturner/gokrb5/config"
+	"github.com/jcmturner/gokrb5/iana/etypeID"
+	"github.com/jcmturner/gokrb5/iana/nametype"
+	"github.com/jcmturner/gokrb5/keytab"
+	"github.com/jcmturner/gokrb5/test"
+	"github.com/jcmturner/gokrb5/test/testdata"
+	"github.com/jcmturner/gokrb5/types"
 
 	"testing"
 )

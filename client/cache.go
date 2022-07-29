@@ -5,8 +5,8 @@ import (
 	"sync"
 	"time"
 
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/messages"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/types"
+	"github.com/jcmturner/gokrb5/messages"
+	"github.com/jcmturner/gokrb5/types"
 )
 
 // Cache for service tickets held by the client.

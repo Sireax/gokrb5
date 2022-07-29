@@ -12,10 +12,10 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/nametype"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/test"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/test/testdata"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/types"
+	"github.com/jcmturner/gokrb5/iana/nametype"
+	"github.com/jcmturner/gokrb5/test"
+	"github.com/jcmturner/gokrb5/test/testdata"
+	"github.com/jcmturner/gokrb5/types"
 )
 
 const (

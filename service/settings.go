@@ -4,8 +4,8 @@ import (
 	"log"
 	"time"
 
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/keytab"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/types"
+	"github.com/jcmturner/gokrb5/keytab"
+	"github.com/jcmturner/gokrb5/types"
 )
 
 // Settings defines service side configuration settings.

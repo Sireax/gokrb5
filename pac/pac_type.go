@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"log"
 
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/crypto"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/iana/keyusage"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/types"
+	"github.com/jcmturner/gokrb5/crypto"
+	"github.com/jcmturner/gokrb5/iana/keyusage"
+	"github.com/jcmturner/gokrb5/types"
 	"gopkg.in/jcmturner/rpc.v1/mstypes"
 )
 

@@ -15,12 +15,12 @@ import (
 	"strings"
 
 	"gopkg.in/jcmturner/goidentity.v3"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/client"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/gssapi"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/keytab"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/krberror"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/service"
-	"gitlab.akb-it.ru/cloud_sber/gokrb5/types"
+	"github.com/jcmturner/gokrb5/client"
+	"github.com/jcmturner/gokrb5/gssapi"
+	"github.com/jcmturner/gokrb5/keytab"
+	"github.com/jcmturner/gokrb5/krberror"
+	"github.com/jcmturner/gokrb5/service"
+	"github.com/jcmturner/gokrb5/types"
 )
 
 // Client side functionality //
