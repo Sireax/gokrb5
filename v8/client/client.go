@@ -243,6 +243,29 @@ func (cl *Client) Destroy() {
 	cl.Log("client destroyed")
 }
 
+func (cl *Client) GetSessionEncpart(domain string) (types.EncryptedData, error) {
+	sess, ok := cl.sessions.get(domain)
+	if !ok {
+		return types.EncryptedData{}, errors.New("realm not found")
+	}
+
+	return sess.tgt.EncPart, nil
+}
+
+func (cl *Client) GetSessionEncryptionKey(domain string) (types.EncryptionKey, error) {
+	sess, ok := cl.sessions.get(domain)
+	if !ok {
+		return types.EncryptionKey{}, errors.New("realm not found")
+	}
+
+	return sess.sessionKey, nil
+}
+
+func (cl *Client) GetSessionTicket(domain string) messages.Ticket {
+	sess, _ := cl.sessions.get(domain)
+	return sess.tgt
+}
+
 // Diagnostics runs a set of checks that the client is properly configured and writes details to the io.Writer provided.
 func (cl *Client) Diagnostics(w io.Writer) error {
 	cl.Print(w)

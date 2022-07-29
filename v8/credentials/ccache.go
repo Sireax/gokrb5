@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/binary"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"strings"
 	"time"
@@ -58,6 +59,110 @@ type Credential struct {
 	AuthData     []types.AuthorizationDataEntry
 	Ticket       []byte
 	SecondTicket []byte
+}
+
+func NewCCacheFromTicket(princ string, domain string, ticket []byte, encKey types.EncryptionKey) (*CCache, error) {
+	//var err error
+
+	clientPrinc := principal{
+		Realm:         domain,
+		PrincipalName: types.NewPrincipalName(1, princ),
+	}
+	serverPrinc := principal{
+		Realm:         domain,
+		PrincipalName: types.NewPrincipalName(2, fmt.Sprintf("krbtgt/%v", domain)),
+	}
+
+	ccache := &CCache{
+		Version: 4,
+		Header: header{
+			length: 12,
+			fields: []headerField{
+				{
+					tag:    headerFieldTagKDCOffset,
+					length: 8,
+					value:  make([]byte, 8),
+				},
+			},
+		},
+		DefaultPrincipal: clientPrinc,
+		Credentials: []*Credential{
+			{
+				Client:    clientPrinc,
+				Server:    serverPrinc,
+				Key:       encKey,
+				AuthTime:  time.Now(),
+				StartTime: time.Now(),
+				EndTime:   time.Now().Add(time.Hour * 24),
+				RenewTill: time.Now().Add(time.Hour * 24),
+				IsSKey:    false,
+				TicketFlags: asn1.BitString{
+					Bytes:     []byte{80, 225, 0, 0},
+					BitLength: 32,
+				},
+				Addresses: []types.HostAddress{},
+				AuthData:  []types.AuthorizationDataEntry{},
+				Ticket:    ticket,
+			},
+			{
+				Client: clientPrinc,
+				Server: principal{
+					Realm: "X-CACHECONF:",
+					PrincipalName: types.PrincipalName{
+						NameType:   0,
+						NameString: []string{"krb5_ccache_conf_data", "fast_avail", "krbtgt/DOMAIN1.LOCAL@DOMAIN1.LOCAL"},
+					},
+				},
+				Key: types.EncryptionKey{
+					KeyType:  0,
+					KeyValue: []byte{},
+				},
+				AuthTime:  time.Unix(0, 0),
+				StartTime: time.Unix(0, 0),
+				EndTime:   time.Unix(0, 0),
+				RenewTill: time.Unix(0, 0),
+				IsSKey:    false,
+				TicketFlags: asn1.BitString{
+					Bytes:     []byte{0, 0, 0, 0},
+					BitLength: 32,
+				},
+				Addresses:    []types.HostAddress{},
+				AuthData:     []types.AuthorizationDataEntry{},
+				Ticket:       []byte{121, 101, 115},
+				SecondTicket: []byte{},
+			},
+			{
+				Client: clientPrinc,
+				Server: principal{
+					Realm: "X-CACHECONF:",
+					PrincipalName: types.PrincipalName{
+						NameType:   0,
+						NameString: []string{"krb5_ccache_conf_data", "pa_type", "krbtgt/DOMAIN1.LOCAL@DOMAIN1.LOCAL"},
+					},
+				},
+				Key: types.EncryptionKey{
+					KeyType:  0,
+					KeyValue: []byte{},
+				},
+				AuthTime:  time.Unix(0, 0),
+				StartTime: time.Unix(0, 0),
+				EndTime:   time.Unix(0, 0),
+				RenewTill: time.Unix(0, 0),
+				IsSKey:    false,
+				TicketFlags: asn1.BitString{
+					Bytes:     []byte{0, 0, 0, 0},
+					BitLength: 32,
+				},
+				Addresses:    []types.HostAddress{},
+				AuthData:     []types.AuthorizationDataEntry{},
+				Ticket:       []byte{50},
+				SecondTicket: []byte{},
+			},
+		},
+		Path: "",
+	}
+
+	return ccache, nil
 }
 
 // LoadCCache loads a credential cache file into a CCache type.
