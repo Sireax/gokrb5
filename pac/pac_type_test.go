@@ -8,9 +8,9 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/jcmturner/gokrb5/keytab"
-	"github.com/jcmturner/gokrb5/test/testdata"
-	"github.com/jcmturner/gokrb5/types"
+	"github.com/Sireax/gokrb5/keytab"
+	"github.com/Sireax/gokrb5/test/testdata"
+	"github.com/Sireax/gokrb5/types"
 )
 
 func TestPACTypeVerify(t *testing.T) {

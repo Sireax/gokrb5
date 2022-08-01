@@ -7,14 +7,14 @@ import (
 
 	"github.com/jcmturner/gofork/encoding/asn1"
 	"github.com/stretchr/testify/assert"
-	"github.com/jcmturner/gokrb5/client"
-	"github.com/jcmturner/gokrb5/credentials"
-	"github.com/jcmturner/gokrb5/gssapi"
-	"github.com/jcmturner/gokrb5/iana/msgtype"
-	"github.com/jcmturner/gokrb5/iana/nametype"
-	"github.com/jcmturner/gokrb5/messages"
-	"github.com/jcmturner/gokrb5/test/testdata"
-	"github.com/jcmturner/gokrb5/types"
+	"github.com/Sireax/gokrb5/client"
+	"github.com/Sireax/gokrb5/credentials"
+	"github.com/Sireax/gokrb5/gssapi"
+	"github.com/Sireax/gokrb5/iana/msgtype"
+	"github.com/Sireax/gokrb5/iana/nametype"
+	"github.com/Sireax/gokrb5/messages"
+	"github.com/Sireax/gokrb5/test/testdata"
+	"github.com/Sireax/gokrb5/types"
 )
 
 const (

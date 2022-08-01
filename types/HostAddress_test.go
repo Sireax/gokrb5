@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/jcmturner/gokrb5/iana/addrtype"
+	"github.com/Sireax/gokrb5/iana/addrtype"
 )
 
 func TestGetHostAddress(t *testing.T) {

@@ -6,10 +6,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/jcmturner/gokrb5/iana/nametype"
-	"github.com/jcmturner/gokrb5/krberror"
-	"github.com/jcmturner/gokrb5/messages"
-	"github.com/jcmturner/gokrb5/types"
+	"github.com/Sireax/gokrb5/iana/nametype"
+	"github.com/Sireax/gokrb5/krberror"
+	"github.com/Sireax/gokrb5/messages"
+	"github.com/Sireax/gokrb5/types"
 )
 
 // sessions hold TGTs and are keyed on the realm name

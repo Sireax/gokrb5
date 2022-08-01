@@ -11,7 +11,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/jcmturner/gokrb5/types"
+	"github.com/Sireax/gokrb5/types"
 )
 
 const (

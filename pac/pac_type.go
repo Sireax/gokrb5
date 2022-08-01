@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/jcmturner/gokrb5/crypto"
-	"github.com/jcmturner/gokrb5/iana/keyusage"
-	"github.com/jcmturner/gokrb5/types"
+	"github.com/Sireax/gokrb5/crypto"
+	"github.com/Sireax/gokrb5/iana/keyusage"
+	"github.com/Sireax/gokrb5/types"
 	"gopkg.in/jcmturner/rpc.v1/mstypes"
 )
 

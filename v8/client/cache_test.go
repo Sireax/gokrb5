@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jcmturner/gokrb5/v8/messages"
-	"github.com/jcmturner/gokrb5/v8/types"
+	"github.com/Sireax/gokrb5/v8/messages"
+	"github.com/Sireax/gokrb5/v8/types"
 	"github.com/stretchr/testify/assert"
 )
 

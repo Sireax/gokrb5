@@ -7,7 +7,7 @@ major version sub-directory.
 The gokrb5 libraries use the same krb5.conf configuration file format as MIT Kerberos, described [here](https://web.mit.edu/kerberos/krb5-latest/doc/admin/conf_files/krb5_conf.html).
 Config instances can be created by loading from a file path or by passing a string, io.Reader or bufio.Scanner to the relevant method:
 ```go
-import "github.com/jcmturner/gokrb5/config"
+import "github.com/Sireax/gokrb5/config"
 cfg, err := config.Load("/path/to/config/file")
 cfg, err := config.NewConfigFromString(krb5Str) //String must have appropriate newline separations
 cfg, err := config.NewConfigFromReader(reader)
@@ -16,7 +16,7 @@ cfg, err := config.NewConfigFromScanner(scanner)
 ### Keytab files
 Standard keytab files can be read from a file or from a slice of bytes:
 ```go
-import 	"github.com/jcmturner/gokrb5/keytab"
+import 	"github.com/Sireax/gokrb5/keytab"
 ktFromFile, err := keytab.Load("/path/to/file.keytab")
 ktFromBytes, err := keytab.Parse(b)
 
@@ -28,7 +28,7 @@ ktFromBytes, err := keytab.Parse(b)
 **Create** a client instance with either a password or a keytab.
 A configuration must also be passed. Additionally optional additional settings can be provided.
 ```go
-import 	"github.com/jcmturner/gokrb5/client"
+import 	"github.com/Sireax/gokrb5/client"
 cl := client.NewClientWithPassword("username", "REALM.COM", "password", cfg)
 cl := client.NewClientWithKeytab("username", "REALM.COM", kt, cfg)
 ```
@@ -192,7 +192,7 @@ if validuser, ok := ctx.Value(spnego.CTXKeyAuthenticated).(bool); ok && validuse
 #### Generic Kerberised Service - Validating Client Details
 To validate the AP_REQ sent by the client on the service side call this method:
 ```go
-import 	"github.com/jcmturner/gokrb5/service"
+import 	"github.com/Sireax/gokrb5/service"
 s := service.NewSettings(&kt) // kt is a keytab and optional settings can also be provided.
 if ok, creds, err := service.VerifyAPREQ(APReq, s); ok {
         // Perform application specific actions

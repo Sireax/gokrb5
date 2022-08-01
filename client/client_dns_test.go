@@ -2,10 +2,10 @@ package client
 
 import (
 	"encoding/hex"
-	"github.com/jcmturner/gokrb5/config"
-	"github.com/jcmturner/gokrb5/keytab"
-	"github.com/jcmturner/gokrb5/test"
-	"github.com/jcmturner/gokrb5/test/testdata"
+	"github.com/Sireax/gokrb5/config"
+	"github.com/Sireax/gokrb5/keytab"
+	"github.com/Sireax/gokrb5/test"
+	"github.com/Sireax/gokrb5/test/testdata"
 	"testing"
 )
 

@@ -5,9 +5,9 @@ import (
 	"time"
 
 	"github.com/hashicorp/go-uuid"
-	"github.com/jcmturner/gokrb5/iana/nametype"
-	"github.com/jcmturner/gokrb5/keytab"
-	"github.com/jcmturner/gokrb5/types"
+	"github.com/Sireax/gokrb5/iana/nametype"
+	"github.com/Sireax/gokrb5/keytab"
+	"github.com/Sireax/gokrb5/types"
 )
 
 const (

@@ -9,14 +9,14 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/jcmturner/gokrb5/iana"
-	"github.com/jcmturner/gokrb5/iana/addrtype"
-	"github.com/jcmturner/gokrb5/iana/adtype"
-	"github.com/jcmturner/gokrb5/iana/nametype"
-	"github.com/jcmturner/gokrb5/iana/trtype"
-	"github.com/jcmturner/gokrb5/keytab"
-	"github.com/jcmturner/gokrb5/test/testdata"
-	"github.com/jcmturner/gokrb5/types"
+	"github.com/Sireax/gokrb5/iana"
+	"github.com/Sireax/gokrb5/iana/addrtype"
+	"github.com/Sireax/gokrb5/iana/adtype"
+	"github.com/Sireax/gokrb5/iana/nametype"
+	"github.com/Sireax/gokrb5/iana/trtype"
+	"github.com/Sireax/gokrb5/keytab"
+	"github.com/Sireax/gokrb5/test/testdata"
+	"github.com/Sireax/gokrb5/types"
 )
 
 func TestUnmarshalTicket(t *testing.T) {

@@ -5,8 +5,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/jcmturner/gokrb5/iana"
-	"github.com/jcmturner/gokrb5/test/testdata"
+	"github.com/Sireax/gokrb5/iana"
+	"github.com/Sireax/gokrb5/test/testdata"
 )
 
 func TestUnmarshalEncryptedData(t *testing.T) {

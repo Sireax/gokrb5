@@ -3,8 +3,8 @@ package config
 import (
 	"testing"
 
-	"github.com/jcmturner/gokrb5/v8/test"
-	"github.com/jcmturner/gokrb5/v8/test/testdata"
+	"github.com/Sireax/gokrb5/v8/test"
+	"github.com/Sireax/gokrb5/v8/test/testdata"
 	"github.com/stretchr/testify/assert"
 )
 

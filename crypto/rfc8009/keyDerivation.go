@@ -7,8 +7,8 @@ import (
 	"errors"
 
 	"golang.org/x/crypto/pbkdf2"
-	"github.com/jcmturner/gokrb5/crypto/etype"
-	"github.com/jcmturner/gokrb5/iana/etypeID"
+	"github.com/Sireax/gokrb5/crypto/etype"
+	"github.com/Sireax/gokrb5/iana/etypeID"
 )
 
 const (

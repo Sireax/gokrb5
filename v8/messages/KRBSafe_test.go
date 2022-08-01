@@ -5,10 +5,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jcmturner/gokrb5/v8/iana"
-	"github.com/jcmturner/gokrb5/v8/iana/addrtype"
-	"github.com/jcmturner/gokrb5/v8/iana/msgtype"
-	"github.com/jcmturner/gokrb5/v8/test/testdata"
+	"github.com/Sireax/gokrb5/v8/iana"
+	"github.com/Sireax/gokrb5/v8/iana/addrtype"
+	"github.com/Sireax/gokrb5/v8/iana/msgtype"
+	"github.com/Sireax/gokrb5/v8/test/testdata"
 	"github.com/stretchr/testify/assert"
 )
 

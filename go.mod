@@ -1,4 +1,4 @@
-module github.com/jcmturner/gokrb5
+module github.com/Sireax/gokrb5
 
 go 1.17
 

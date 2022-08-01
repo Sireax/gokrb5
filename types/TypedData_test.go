@@ -6,8 +6,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/jcmturner/gokrb5/iana/patype"
-	"github.com/jcmturner/gokrb5/test/testdata"
+	"github.com/Sireax/gokrb5/iana/patype"
+	"github.com/Sireax/gokrb5/test/testdata"
 )
 
 func TestUnmarshalTypedData(t *testing.T) {
