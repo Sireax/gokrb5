@@ -30,13 +30,15 @@ type CCache struct {
 func NewCCacheFromTicket(princ string, domain string, ticket []byte, encKey types.EncryptionKey) (*CCache, error) {
 	//var err error
 
+	svcPrinc := fmt.Sprintf("krbtgt/%v", domain)
+
 	clientPrinc := principal{
 		Realm:         domain,
 		PrincipalName: types.NewPrincipalName(1, princ),
 	}
 	serverPrinc := principal{
 		Realm:         domain,
-		PrincipalName: types.NewPrincipalName(2, fmt.Sprintf("krbtgt/%v", domain)),
+		PrincipalName: types.NewPrincipalName(2, svcPrinc),
 	}
 
 	ccache := &CCache{
@@ -76,7 +78,7 @@ func NewCCacheFromTicket(princ string, domain string, ticket []byte, encKey type
 					Realm: "X-CACHECONF:",
 					PrincipalName: types.PrincipalName{
 						NameType:   0,
-						NameString: []string{"krb5_ccache_conf_data", "fast_avail", "krbtgt/DOMAIN1.LOCAL@DOMAIN1.LOCAL"},
+						NameString: []string{"krb5_ccache_conf_data", "fast_avail", fmt.Sprintf("%v@%v", svcPrinc, domain)},
 					},
 				},
 				Key: types.EncryptionKey{
@@ -103,7 +105,7 @@ func NewCCacheFromTicket(princ string, domain string, ticket []byte, encKey type
 					Realm: "X-CACHECONF:",
 					PrincipalName: types.PrincipalName{
 						NameType:   0,
-						NameString: []string{"krb5_ccache_conf_data", "pa_type", "krbtgt/DOMAIN1.LOCAL@DOMAIN1.LOCAL"},
+						NameString: []string{"krb5_ccache_conf_data", "pa_type", fmt.Sprintf("%v@%v", svcPrinc, domain)},
 					},
 				},
 				Key: types.EncryptionKey{

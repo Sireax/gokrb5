@@ -10,8 +10,8 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/jcmturner/gofork/encoding/asn1"
 	"github.com/Sireax/gokrb5/v8/types"
+	"github.com/jcmturner/gofork/encoding/asn1"
 )
 
 const (
@@ -73,6 +73,8 @@ func NewCCacheFromTicket(princ string, domain string, ticket []byte, encKey type
 		PrincipalName: types.NewPrincipalName(2, fmt.Sprintf("krbtgt/%v", domain)),
 	}
 
+	svcPrinc := fmt.Sprintf("krbtgt/%v", domain)
+
 	ccache := &CCache{
 		Version: 4,
 		Header: header{
@@ -110,7 +112,7 @@ func NewCCacheFromTicket(princ string, domain string, ticket []byte, encKey type
 					Realm: "X-CACHECONF:",
 					PrincipalName: types.PrincipalName{
 						NameType:   0,
-						NameString: []string{"krb5_ccache_conf_data", "fast_avail", "krbtgt/DOMAIN1.LOCAL@DOMAIN1.LOCAL"},
+						NameString: []string{"krb5_ccache_conf_data", "fast_avail", fmt.Sprintf("%v@%v", svcPrinc, domain)},
 					},
 				},
 				Key: types.EncryptionKey{
@@ -137,7 +139,7 @@ func NewCCacheFromTicket(princ string, domain string, ticket []byte, encKey type
 					Realm: "X-CACHECONF:",
 					PrincipalName: types.PrincipalName{
 						NameType:   0,
-						NameString: []string{"krb5_ccache_conf_data", "pa_type", "krbtgt/DOMAIN1.LOCAL@DOMAIN1.LOCAL"},
+						NameString: []string{"krb5_ccache_conf_data", "pa_type", fmt.Sprintf("%v@%v", svcPrinc, domain)},
 					},
 				},
 				Key: types.EncryptionKey{
