@@ -1,6 +1,6 @@
 module github.com/Sireax/gokrb5
 
-go 1.17
+go 1.14
 
 require (
 	github.com/hashicorp/go-uuid v1.0.3
