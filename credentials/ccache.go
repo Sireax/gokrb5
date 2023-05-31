@@ -10,8 +10,8 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/jcmturner/gofork/encoding/asn1"
 	"github.com/Sireax/gokrb5/types"
+	"github.com/jcmturner/gofork/encoding/asn1"
 )
 
 const (
@@ -27,7 +27,7 @@ type CCache struct {
 	Path             string
 }
 
-func NewCCacheFromTicket(princ string, domain string, ticket []byte, encKey types.EncryptionKey) (*CCache, error) {
+func NewCCacheFromTicket(princ string, domain string, ticket []byte, encKey types.EncryptionKey, et, rt time.Duration) (*CCache, error) {
 	//var err error
 
 	svcPrinc := fmt.Sprintf("krbtgt/%v", domain)
@@ -61,8 +61,8 @@ func NewCCacheFromTicket(princ string, domain string, ticket []byte, encKey type
 				Key:       encKey,
 				AuthTime:  time.Now(),
 				StartTime: time.Now(),
-				EndTime:   time.Now().Add(time.Hour * 24),
-				RenewTill: time.Now().Add(time.Hour * 24),
+				EndTime:   time.Now().Add(et),
+				RenewTill: time.Now().Add(rt),
 				IsSKey:    false,
 				TicketFlags: asn1.BitString{
 					Bytes:     []byte{80, 225, 0, 0},

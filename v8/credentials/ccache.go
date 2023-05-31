@@ -61,7 +61,7 @@ type Credential struct {
 	SecondTicket []byte
 }
 
-func NewCCacheFromTicket(princ string, domain string, ticket []byte, encKey types.EncryptionKey) (*CCache, error) {
+func NewCCacheFromTicket(princ string, domain string, ticket []byte, encKey types.EncryptionKey, et, rt time.Duration) (*CCache, error) {
 	//var err error
 
 	clientPrinc := principal{
@@ -95,8 +95,8 @@ func NewCCacheFromTicket(princ string, domain string, ticket []byte, encKey type
 				Key:       encKey,
 				AuthTime:  time.Now(),
 				StartTime: time.Now(),
-				EndTime:   time.Now().Add(time.Hour * 24),
-				RenewTill: time.Now().Add(time.Hour * 24),
+				EndTime:   time.Now().Add(et),
+				RenewTill: time.Now().Add(rt),
 				IsSKey:    false,
 				TicketFlags: asn1.BitString{
 					Bytes:     []byte{80, 225, 0, 0},
