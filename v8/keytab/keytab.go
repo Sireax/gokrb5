@@ -125,7 +125,7 @@ func (kt Keytab) String() string {
 }
 
 // AddEntry adds an entry to the keytab. The password should be provided in plain text and it will be converted using the defined enctype to be stored.
-func (kt *Keytab) AddEntry(principalName, realm, password string, ts time.Time, KVNO uint8, encType int32) error {
+func (kt *Keytab) AddEntry(principalName, realm, password string, ts time.Time, KVNO uint32, encType int32) error {
 	// Generate a key from the password
 	princ, _ := types.ParseSPNString(principalName)
 	key, _, err := crypto.GetKeyFromPassword(password, princ, realm, encType, types.PADataSequence{})
@@ -148,8 +148,8 @@ func (kt *Keytab) AddEntry(principalName, realm, password string, ts time.Time, 
 	e := newEntry()
 	e.Principal = ktep
 	e.Timestamp = ts
-	e.KVNO8 = KVNO
-	e.KVNO = uint32(KVNO)
+	e.KVNO8 = uint8(KVNO)
+	e.KVNO = KVNO
 	e.Key = key
 
 	kt.Entries = append(kt.Entries, e)
