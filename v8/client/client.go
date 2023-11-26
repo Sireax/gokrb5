@@ -261,9 +261,12 @@ func (cl *Client) GetSessionEncryptionKey(domain string) (types.EncryptionKey, e
 	return sess.sessionKey, nil
 }
 
-func (cl *Client) GetSessionTicket(domain string) messages.Ticket {
-	sess, _ := cl.sessions.get(domain)
-	return sess.tgt
+func (cl *Client) GetSessionTicket(domain string) *messages.Ticket {
+	sess, ok := cl.sessions.get(domain)
+	if !ok {
+		return nil
+	}
+	return &sess.tgt
 }
 
 // Diagnostics runs a set of checks that the client is properly configured and writes details to the io.Writer provided.
