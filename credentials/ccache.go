@@ -155,21 +155,21 @@ func (c *CCache) Marshal() ([]byte, error) {
 	if c.Version == 4 {
 		err := writeHeader(&data, &p, c, &endian)
 		if err != nil {
-			panic(err)
+			return nil, err
 		}
 	}
 
 	// Writing principals
 	err := writePrincipal(&data, &p, c, &endian, c.DefaultPrincipal)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	// Writing credentials
 	for _, credential := range c.Credentials {
 		err := writeCredential(&data, &p, c, &endian, credential)
 		if err != nil {
-			panic(err)
+			return nil, err
 		}
 	}
 
@@ -295,10 +295,6 @@ func writeHeader(b *[]byte, p *int, c *CCache, e *binary.ByteOrder) error {
 		writeInt16(b, p, e, int16(field.length))
 
 		*b = append(*b, field.value...)
-		//_, err = b.Write(field.value)
-		//if err != nil {
-		//	panic(err)
-		//}
 	}
 
 	return nil
@@ -392,11 +388,11 @@ func writeCredential(b *[]byte, p *int, c *CCache, e *binary.ByteOrder, cred *Cr
 	// Writing principals
 	err = writePrincipal(b, p, c, e, cred.Client)
 	if err != nil {
-		panic(err)
+		return err
 	}
 	err = writePrincipal(b, p, c, e, cred.Server)
 	if err != nil {
-		panic(err)
+		return err
 	}
 
 	// Writing encryption key
@@ -424,7 +420,7 @@ func writeCredential(b *[]byte, p *int, c *CCache, e *binary.ByteOrder, cred *Cr
 	for _, a := range cred.Addresses {
 		err = writeAddress(b, p, e, a)
 		if err != nil {
-			panic(err)
+			return err
 		}
 	}
 
@@ -434,7 +430,7 @@ func writeCredential(b *[]byte, p *int, c *CCache, e *binary.ByteOrder, cred *Cr
 	for _, a := range cred.AuthData {
 		err = writeAuthDataEntry(b, p, e, a)
 		if err != nil {
-			panic(err)
+			return err
 		}
 	}
 
